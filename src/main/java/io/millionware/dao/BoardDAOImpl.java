@@ -34,4 +34,17 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne("boardMapper.read", bno);
 	}
 
+	//글 수정
+	@Override
+	public void update(BoardVO boardVO) throws Exception {
+		sqlSession.update("boardMapper.update", boardVO);
+	}
+	
+	//글 삭제
+	@Override
+	public void delete(int bno) throws Exception {
+		sqlSession.delete("boardMapper.update", bno);
+	}
+
+	
 }

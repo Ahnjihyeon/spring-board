@@ -11,6 +11,7 @@ import io.millionware.service.BoardService;
 import io.millionware.vo.BoardVO;
 
 @Controller
+@RequestMapping(value="/board")
 public class BoardController {
 	
 	
@@ -18,12 +19,12 @@ public class BoardController {
 	BoardService service;
 	
 	//글 작성 화면
-	@RequestMapping(value = "/board/writeView", method = RequestMethod.GET)
+	@RequestMapping(value = "/writeView", method = RequestMethod.GET)
 	public void writeView() throws Exception{
 	}
 	
 	//글 작성
-	@RequestMapping(value = "board/write", method = RequestMethod.POST)
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String write(BoardVO boardVO) throws Exception{		
 		service.write(boardVO);
 		return "redirect:/board/list";
@@ -31,7 +32,7 @@ public class BoardController {
 	}
 	
 	//글 목록 조회
-	@RequestMapping(value="/board/list", method = RequestMethod.GET)
+	@RequestMapping(value="/list", method = RequestMethod.GET)
 	public String list(Model model) throws Exception{
 		model.addAttribute("list",service.list());	
 		return "board/list";
@@ -39,10 +40,29 @@ public class BoardController {
 	}
 	
 	//글 조회
-	@RequestMapping(value="/board/readView", method = RequestMethod.GET)
+	@RequestMapping(value="/readView", method = RequestMethod.GET)
 	public String read(BoardVO boardVO, Model model) throws Exception{
 		model.addAttribute("read", service.read(boardVO.getBno()));
 		return "board/readView";
 	}
 	
+	//글 수정 화면
+	@RequestMapping(value="/updateView", method = RequestMethod.GET)
+	public String updateView(BoardVO boardVO, Model model)throws Exception{
+		model.addAttribute("update", service.read(boardVO.getBno()));
+		return "board/updateView";
+	}
+	
+	//글 수정
+	@RequestMapping(value="/update", method = RequestMethod.POST)
+	public String update(BoardVO boardVO) throws Exception{
+		service.update(boardVO);
+		return "redirect:/board/list";
+	}
+	
+	@RequestMapping(value="/delete", method = RequestMethod.POST)
+	public String delete(BoardVO boardVO) throws Exception{
+		service.delete(boardVO.getBno());
+		return "redirect:/board/list";
+	}
 }

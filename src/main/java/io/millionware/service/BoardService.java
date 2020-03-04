@@ -13,4 +13,11 @@ public interface BoardService {
 	
 	//글 조회
 	public BoardVO read(int bno) throws Exception;
+	
+	//글 수정
+	public void update(BoardVO boardVO) throws Exception;
+	
+	//글 삭제
+	public void delete(int bno) throws Exception;
+	
 }
