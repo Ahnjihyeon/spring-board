@@ -8,6 +8,9 @@ public class BoardVO {
 	private String content;
 	private String writer;
 	private Date regdate;
+	
+
+	
 	public int getBno() {
 		return bno;
 	}
