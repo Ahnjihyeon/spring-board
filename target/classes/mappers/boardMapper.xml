@@ -24,7 +24,7 @@
    </select>
    <update id="update" parameterType="io.millionware.vo.BoardVO">
    	UPDATE BOARDTRANING
-   	SET TITLE = #{title}
+   	SET TITLE = #{title},
    		CONTENT = #{content}
    	WHERE BNO = #{bno}
    </update>
