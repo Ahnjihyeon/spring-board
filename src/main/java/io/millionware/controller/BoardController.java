@@ -31,7 +31,7 @@ public class BoardController {
 	}
 	
 	//글 목록 조회
-	@RequestMapping(value="/list", method = RequestMethod.GET)
+	@RequestMapping(value="/board/list", method = RequestMethod.GET)
 	public String list(Model model) throws Exception{
 		model.addAttribute("list",service.list());	
 		return "board/list";
@@ -39,7 +39,7 @@ public class BoardController {
 	}
 	
 	//글 조회
-	@RequestMapping(value="/readView", method = RequestMethod.GET)
+	@RequestMapping(value="/board/readView", method = RequestMethod.GET)
 	public String read(BoardVO boardVO, Model model) throws Exception{
 		model.addAttribute("read", service.read(boardVO.getBno()));
 		return "board/readView";
