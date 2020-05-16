@@ -11,7 +11,7 @@ import io.millionware.service.BoardService;
 import io.millionware.vo.BoardVO;
 
 @Controller
-@RequestMapping(value="/board")
+@RequestMapping(value="/board/*")
 public class BoardController {
 	
 	
@@ -27,12 +27,12 @@ public class BoardController {
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String write(BoardVO boardVO) throws Exception{		
 		service.write(boardVO);
-		return "redirect:/board/list";
+		return "redirect:/board/list123";
 	
 	}
 	
 	//글 목록 조회
-	@RequestMapping(value="/list", method = RequestMethod.GET)
+	@RequestMapping(value="/list123", method = RequestMethod.GET)
 	public String list(Model model) throws Exception{
 		model.addAttribute("list",service.list());	
 		return "board/list";
@@ -40,14 +40,14 @@ public class BoardController {
 	}
 	
 	//글 조회
-	@RequestMapping(value="/readView", method = RequestMethod.GET)
+	@RequestMapping(value="/read", method = RequestMethod.GET)
 	public String read(BoardVO boardVO, Model model) throws Exception{
 		model.addAttribute("read", service.read(boardVO.getBno()));
 		return "board/readView";
 	}
 	
 	//글 수정 화면
-	@RequestMapping(value="/updateView", method = RequestMethod.GET)
+	@RequestMapping(value="/update", method = RequestMethod.GET)
 	public String updateView(BoardVO boardVO, Model model)throws Exception{
 		model.addAttribute("update", service.read(boardVO.getBno()));
 		return "board/updateView";
@@ -57,7 +57,7 @@ public class BoardController {
 	@RequestMapping(value="/update", method = RequestMethod.POST)
 	public String update(BoardVO boardVO) throws Exception{
 		service.update(boardVO);
-		return "redirect:/board/list";
+		return "redirect:/board/list123";
 	}
 	
 	@RequestMapping(value="/delete", method = RequestMethod.POST)
